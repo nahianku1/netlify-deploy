@@ -81,6 +81,34 @@ jobs:
 
  **3. build_directory:** *This is optional option.* Normally it is dist folder as **vite** does. But if you have different folder then put the option and give your corresponding folder.
 
+ ```js
+ 
+ name: Netlify Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: deploy to netlify
+        id: deploy
+        uses: nahianku1/netlify-deploy@v1
+        with:
+          auth_token: ${{secrets.NETLIFY_TOKEN}}
+          site_name: custom-react-app
+          build_directory: build
+      - name: Output URL
+        run: echo "${{steps.deploy.outputs.live-url}}"
+
+ 
+ ```
+
  
 
 
