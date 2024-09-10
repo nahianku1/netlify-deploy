@@ -1,0 +1,25 @@
+name: "Deploy to Netlify"
+description: "A custom JavaScript action to deploy a React site to Netlify."
+inputs:
+  auth_token:
+    description: "Netlify authentication token"
+    required: true
+  build_directory:
+    description: "The directory containing the build files"
+    default: "dist"
+    required: false
+  site_name:
+    description: This is used for site name
+    required: true
+
+outputs:
+  live-url:
+    description: This is the live URL for the site
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
+
+branding:
+  icon: award
+  color: blue
